@@ -2,7 +2,7 @@ import * as React from 'react';
 import "./index.css";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import axios from 'axios';
+import { createPlaylist } from "../../lib/fetchAPI";
 
 interface State {
     token: {
@@ -12,32 +12,7 @@ interface State {
 
 const Playlist: React.FC<{songs:string[]}> = ({songs}) => {
     const [playlist, setPlaylist] = useState({name: '', description: ''});
-    const {access_token} = useSelector((state:State) => state.token);
-
-    const createPlaylist = async () => {
-        const{name, description} = playlist;
-        await axios.post('https://api.spotify.com/v1/me/playlists', {
-            name,
-            description,
-            public: false,
-            collaborative: false
-        }, {
-            headers: {
-                'Authorization': 'Bearer ' + access_token,
-            }
-        })
-        .then(response => {
-            const {id} = response.data;
-            axios.post(`https://api.spotify.com/v1/playlists/${id}/tracks`, {
-                uris: songs
-            }, {
-                headers: {
-                    'Authorization': 'Bearer ' + access_token,
-                }
-            })
-        })
-        alert(`Playlist ${name} created! Check your Spotify account.`);        
-    }
+    const { access_token } = useSelector((state:State) => state.token);
 
     const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
@@ -45,7 +20,7 @@ const Playlist: React.FC<{songs:string[]}> = ({songs}) => {
             alert('Please select songs!');
             return false;
         }
-        playlist.name.length >= 5 ? createPlaylist() : alert('The title must be at least 5 characters long');
+        playlist.name.length >= 10 ? createPlaylist(playlist, access_token, songs) : alert('The title must be at least 10 characters long');
     }
 
     const handleInputChange = (e: { target: { name: string; value: string; }; }) => {
@@ -55,13 +30,13 @@ const Playlist: React.FC<{songs:string[]}> = ({songs}) => {
 
     return(
         <div data-testid="playlist" className="playlist">
-            <h1>Playlist</h1>
+            <h2>Playlist</h2>
             <form>
                 <table className="tablePlaylist">
                     <tbody>
                         <tr>
                             <td><label htmlFor="title">Title:</label></td>
-                            <td><input type="text" name="name" onChange={handleInputChange} placeholder='must be at least 5 characters'/></td>
+                            <td><input type="text" name="name" onChange={handleInputChange} placeholder='must be at least 10 characters'/></td>
                         </tr>
                         <tr>
                             <td><label htmlFor="description">Description:</label></td>
