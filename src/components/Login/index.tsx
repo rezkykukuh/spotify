@@ -5,7 +5,7 @@ import { saveToken } from '../../slice/token-slice';
 
 const CLIENT_ID = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
 const SPOTIFY_AUTHORIZE_URL = 'https://accounts.spotify.com/authorize';
-const REDIRECT_URL = "https://vercel.com/";
+const REDIRECT_URL = "https://spotify-lilac.vercel.app/";
 const SCOPES = 'playlist-modify-private';
 
 type Acc = { [key: string]: string };
