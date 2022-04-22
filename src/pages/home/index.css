@@ -1,0 +1,15 @@
+.home {
+  text-align: center;
+}
+
+.tracks {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #212121;
+}
+  
+.search {
+  padding-top: 20px;
+  background-color: #dce1ff;
+  color: rgb(0, 0, 0);
+}

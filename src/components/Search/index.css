@@ -1,0 +1,63 @@
+.kotak{
+  background-color: #000000;
+  margin: 50px;
+}
+.tableSearchResult {
+  display: grid;
+  grid-template: repeat(5, 20%) / repeat(2, 50%);
+  grid-template-rows: minmax(0, auto);
+
+}
+
+.tableSearchResult .td {
+  text-align: left;
+  border-radius: 20px;
+  margin: 4% 4%;
+  background-color: rgb(53, 88, 124);
+  padding: 10px 10px 20px;
+  border: 1px solid white;
+  display: flex;
+  justify-content: space-around;
+}
+
+.tableSearchResult .duration {
+  align-self: center;
+}
+
+.tableSearchResult img {
+  width: 30%;
+}
+
+.songInfo {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.songInfo h3 {
+  margin: 0 0 -15px;
+}
+
+.lightText {
+  color: rgb(255, 255, 255);
+}
+
+.selectButtonHandler {
+  width: 90px;
+  padding: 5px 15px;
+  border-radius: 50px;
+  background-color: rgb(201, 0, 50);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.selectButtonHandler:hover {
+background-color: rgb(138, 1, 1);
+}
+
+.selectButtonHandler[value="Deselect"]{
+background-color: #d8d8d8;
+color: rgb(10, 10, 10);
+}
