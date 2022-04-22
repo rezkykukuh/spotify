@@ -3,7 +3,18 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
+Nama project: Create Spotify Playlist Website
 
+Deskripsi: website sederana pembuatan playlist pada aplikasi spotify dengan menggunakan React js dan spotify API
+
+Fitur:
+Terdapat fitur login yang mengauntetikasi dengan client id
+pembuatan playlist yang terhubung dengan akun spotify
+halaman pencarian yang menggunakan sporify search API
+
+cara instal :
+clone repo
+lakukan "npm instal" pada terminal
 In the project directory, you can run:
 
 ### `npm start`
